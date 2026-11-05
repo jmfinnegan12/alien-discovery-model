@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Model · Will the U.S. confirm that aliens exist? · Event Neutral</title>
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap bar-inner">
+    <a class="brand" href="https://eventneutral.com/">Event&nbsp;Neutral</a>
+    <nav class="nav">
+      <a href="https://eventneutral.com/">Home</a>
+      <a href="https://eventneutral.com/about/">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="kicker">Kalshi KXALIENS · started 2026-11-05 · updated 2026-11-05</div>
+    <h1>Will the U.S. confirm that aliens exist?</h1>
+    <nav class="wiki"><a href="../">Question</a> <a href="../where-things-stand/">Where things stand</a> <a href="../model/" aria-current="page">Model</a></nav>
+    <p class="src"><a href="https://github.com/jmfinnegan12/alien-discovery-model">GitHub</a> · <a href="https://github.com/jmfinnegan12/alien-discovery-model/issues/new">suggest a change</a> · <a href="https://github.com/jmfinnegan12/alien-discovery-model/blob/main/CONTRIBUTING.md">how to contribute</a></p>
+    <h2><a class="t" href="../rules/">How it resolves</a></h2>
+    <p>A definitive official statement counts, even without proof. <a href="../rules/">Rules →</a></p>
+
+    <h2>Base case</h2>
+    <p>The default is No. No discovery has been confirmed, and every past market in this series has resolved No.</p>
+
+    <h2>Three paths to Yes</h2>
+    <figure><a href="../assets/paths-to-yes.png"><img src="../assets/paths-to-yes.png" alt="Diagram of the three paths to a Yes resolution: science, disclosure and an off-the-cuff remark"></a><figcaption>Click to enlarge.</figcaption></figure>
+    <ul>
+      <li><strong>Science:</strong> a confirmed find, announced by a U.S. agency. International finds count only if a U.S. official restates them.</li>
+      <li><strong>Disclosure:</strong> the government already holds proof and releases it.</li>
+      <li><strong>Off-the-cuff remark:</strong> an official says "aliens are real" with confidence, in an official setting. The rules ask for a definitive statement, not proof (<a href="https://assets.kalshi.com/contract_terms/ALIENS.pdf">contract terms</a>). Obama's 2026 remark wouldn't count, since he's a former official (<a href="https://www.ctpublic.org/2026-02-20/trump-says-he-doesnt-know-if-aliens-are-real-but-directs-government-to-release-files-on-ufos">AP</a>).</li>
+    </ul>
+
+    <h2>Model inputs</h2>
+    <figure><a href="../assets/model-inputs.png"><img src="../assets/model-inputs.png" alt="Diagram of the model inputs for each path, with central values and ranges"></a><figcaption>Click to enlarge.</figcaption></figure>
+    <ul>
+      <li><strong>Life exists and can be found, eventually: 70% [60–80%].</strong> A coin flip is the neutral start; the size of the universe and the pace of discovery lean it higher. Existing and being findable are taken together to avoid counting the same doubt twice.</li>
+      <li><strong>Timing, S-curve with its steepest point about 10 years out [7–13].</strong> Ten years is a reasonable horizon for detection given how fast space observation is moving. The curve starts flat because the best near-term lead, the Mars sample, has no way back to Earth (<a href="https://space.com/space-exploration/mars-rovers/the-trump-administration-wants-to-cancel-nasas-mars-sample-return-mission-experts-say-thats-a-major-step-back">Space.com</a>), and China's sample return lands around 2031 (<a href="https://www.space.com/astronomy/mars/china-on-track-to-launch-mars-sample-return-mission-in-2028-if-accurate-this-represents-a-sputnik-moment">Space.com</a>).</li>
+      <li><strong>Discovery becomes a definitive U.S. statement: 100%.</strong> A concrete find is assumed to be announced. Open question.</li>
+      <li><strong>The government already holds proof: 4%.</strong> Low single digits. Nothing in the released files confirms anything (<a href="https://thenextweb.com/news/pentagon-ufo-files-war-gov-pursue">The Next Web</a>).</li>
+      <li><strong>This administration discloses it, given it exists: 35% [30–40%].</strong> The release push is real (<a href="https://www.ctpublic.org/2026-02-20/trump-says-he-doesnt-know-if-aliens-are-real-but-directs-government-to-release-files-on-ufos">AP</a>), but full disclosure is still less likely than not.</li>
+      <li><strong>Off-the-cuff remark that counts: 1% by Jan 20, 2029.</strong> A tail risk: it needs both a confident official remark and the exchange accepting it without proof.</li>
+      <li><strong>Disclosure and remark timing:</strong> spread evenly from today to the end of the presidential term.</li>
+    </ul>
+    <p class="muted">P(Yes before date) = 1 − (1 − Science)(1 − Disclosure)(1 − Remark). The model is a short Python script in this repository: <code>code/forecast_curve.py</code>.</p>
+
+    <h2>Forecast</h2>
+    <figure>
+      <img src="../assets/forecast-2026-11-05.png" alt="Chart of the forecast curve with its range band for four dates">
+      <figcaption>Written before looking at market prices.</figcaption>
+    </figure>
+    <table class="num">
+      <thead><tr><th>Before</th><th>Forecast [range]</th></tr></thead>
+      <tbody>
+        <tr><td>Dec 1, 2026</td><td>0.1% [0.1–0.2%]</td></tr>
+        <tr><td>Jan 1, 2027</td><td>0.2% [0.2–0.4%]</td></tr>
+        <tr><td>Jan 1, 2028</td><td>1.8% [1.3–3.6%]</td></tr>
+        <tr><td>Jan 20, 2029</td><td>3.7% [2.5–7.8%]</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Assumptions</h2>
+    <ul>
+      <li>A concrete discovery would be announced fast enough to count.</li>
+      <li>The three paths are independent.</li>
+      <li>Disclosure and remark chances are spread evenly over the term.</li>
+    </ul>
+
+    <h2>Weak points</h2>
+    <ul>
+      <li><strong>The near-term science curve may be too flat.</strong> Most of the gap with the market is here.</li>
+      <li><strong>Insiders.</strong> Anyone who knows of a coming announcement would buy Yes, so the market may be pricing information this model lacks.</li>
+      <li><strong>"Definitively" is undefined.</strong> A confident remark could count without proof (<a href="https://assets.kalshi.com/contract_terms/ALIENS.pdf">contract terms</a>).</li>
+      <li><strong>Discovery is not announcement.</strong> Scientists take years and hedge their language; the model assumes they would not.</li>
+    </ul>
+
+    <h2>Update triggers</h2>
+    <ul>
+      <li>New biosignature news: Mars, K2-18b, any sample return.</li>
+      <li>A new PURSUE file release, or a White House or agency statement on UAP.</li>
+      <li>Kalshi clarifying the rules or resolving a borderline case.</li>
+      <li>New monthly markets listing (Feb 1, Mar 1, …), which add points to the curve.</li>
+    </ul>
+
+    <h2>Open questions</h2>
+    <ul>
+      <li>What does the path from a discovery to an official announcement look like in practice: a press conference, or years of peer review?</li>
+      <li>What do surveys of scientists say about whether life exists elsewhere, and when it will be found?</li>
+      <li>Should known milestones, like a sample return or a mission arrival, show up as steps on the curve?</li>
+      <li>Asteroid samples (Bennu, Ryugu) are not yet researched.</li>
+    </ul>
+
+    <h2>Use your own inputs</h2>
+    <p>The structure above and every number in it are this page's own calls. Fork the <a href="https://github.com/jmfinnegan12/alien-discovery-model">repository</a>, change the inputs in the parameters block at the top of <code>code/forecast_curve.py</code>, and run it to get your own curve and chart. Change the structure too, if you think a path is missing.</p>
+
+    <p class="muted">Last updated 2026-11-05 · <a href="https://github.com/jmfinnegan12/alien-discovery-model/commits/main/model/index.html">history</a></p>
+    <p class="muted">Nothing here is financial advice or a recommendation to trade.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot-inner">© 2026 Temerity Ventures LLC</div>
+</footer>
+
+</body>
+</html>
