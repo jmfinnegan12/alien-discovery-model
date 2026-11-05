@@ -9,6 +9,8 @@ A model from [Event Neutral](https://eventneutral.com): will U.S. officials anno
 - `model/rationale/`: why each input has the value it does (linked from the Model page).
 - `assets/`: styles and charts.
 
+---
+
 Started 2026-11-05. Nothing here is financial advice.
 
 License: MIT, see [LICENSE](LICENSE).
