@@ -1,6 +1,6 @@
 """Alien discovery model: probability-versus-date curve for Kalshi's KXALIENS markets.
 
-First version 2026-11-05. Edit the PARAMETERS block and rerun:
+First version 2026-11-05. Edit the inputs in model/inputs.json and rerun:
     python forecast_curve.py
 Writes forecast_curve.csv and forecast_curve.png next to this file.
 
@@ -13,22 +13,26 @@ Paths to Yes (summed as independent; union taken):
   Remark      p_remark, spread evenly from today to the end of the term.
 """
 import csv
+import json
 import math
 from datetime import date
 from pathlib import Path
 
-# ---------------- PARAMETERS (central, low, high) ----------------
-TODAY = date(2026, 11, 5)
-TERM_END = date(2029, 1, 20)
-L = (0.70, 0.60, 0.80)          # exist and findable, eventually
-T0 = (10.0, 13.0, 7.0)          # steepest point, years from today (later = lower curve)
-K = 0.44                        # steepness: 10%->90% of the rise spans ~10 years
-C = (1.0, 1.0, 1.0)             # discovery -> definitive US statement (assumed announced)
-P_SECRET = (0.04, 0.04, 0.04)   # government holds proof
-P_DISCLOSE = (0.35, 0.30, 0.40) # Trump administration discloses it, given it exists
-P_REMARK = (0.01, 0.01, 0.01)   # off-the-cuff (cut from 2% on 2026-11-05) definitive remark by the end of the term
+# ---------------- PARAMETERS ----------------
+# The forecast's inputs live in model/inputs.json, shared with the Model page. Edit them there.
+INPUTS_FILE = Path(__file__).resolve().parent.parent / "model" / "inputs.json"
+_cfg = json.loads(INPUTS_FILE.read_text(encoding="utf-8"))
+_d = date.fromisoformat
+TODAY = _d(_cfg["as_of"])
+TERM_END = _d(_cfg["term_end"])
+# Each input is (central, low case, high case).
+L, T0, K, C, P_SECRET, P_DISCLOSE, P_REMARK = (
+    tuple(_cfg["inputs"][name][k] for k in ("central", "low_case", "high_case"))
+    for name in ("L", "T0", "K", "C", "P_SECRET", "P_DISCLOSE", "P_REMARK")
+)
+MARKET_DATES = [_d(x) for x in _cfg["market_dates"]]
 
-MARKET_DATES = [date(2026, 12, 1), date(2027, 1, 1), date(2028, 1, 1), date(2029, 1, 20)]
+# Chart-only settings.
 # Market Yes mid-price per date, entered AFTER the forecast is written (blind first). Leave empty to hide.
 MARKET_YES = {}
 MARKET_AS_OF = "2026-11-05"
@@ -44,10 +48,10 @@ def logistic(t, t0, k):
     return 1 / (1 + math.exp(-k * (t - t0)))
 
 
-def science(d, l, t0, c):
+def science(d, l, t0, k, c):
     t = years(d)
-    f0 = logistic(0, t0, K)
-    s = (logistic(t, t0, K) - f0) / (1 - f0)
+    f0 = logistic(0, t0, k)
+    s = (logistic(t, t0, k) - f0) / (1 - f0)
     return l * c * max(s, 0)
 
 
@@ -57,7 +61,7 @@ def term_share(d):
 
 
 def total(d, i):
-    sci = science(d, L[i], T0[i], C[i])
+    sci = science(d, L[i], T0[i], K[i], C[i])
     dis = P_SECRET[i] * P_DISCLOSE[i] * term_share(d)
     rem = P_REMARK[i] * term_share(d)
     return sci, dis, rem, 1 - (1 - sci) * (1 - dis) * (1 - rem)

@@ -1,0 +1,15 @@
+{
+  "_about": "The forecast's inputs. Both the Model page (model/model.js) and code/forecast_curve.py read this file; edit here only. Probabilities are 0-1. low_case/high_case mean a lower/higher chance of Yes, so for t0 the low case is the later year.",
+  "as_of": "2026-11-05",
+  "term_end": "2029-01-20",
+  "market_dates": ["2026-12-01", "2027-01-01", "2028-01-01", "2029-01-20"],
+  "inputs": {
+    "L":          {"central": 0.70, "low_case": 0.60, "high_case": 0.80, "note": "life exists and can be found, eventually"},
+    "T0":         {"central": 10.0, "low_case": 13.0, "high_case": 7.0,  "note": "steepest point of the S-curve, years from as_of"},
+    "K":          {"central": 0.44, "low_case": 0.44, "high_case": 0.44, "note": "steepness; 0.44 = the 10%-to-90% rise takes about 10 years"},
+    "C":          {"central": 1.0,  "low_case": 1.0,  "high_case": 1.0,  "note": "a discovery becomes a definitive U.S. statement"},
+    "P_SECRET":   {"central": 0.04, "low_case": 0.04, "high_case": 0.04, "note": "the government already holds proof"},
+    "P_DISCLOSE": {"central": 0.35, "low_case": 0.30, "high_case": 0.40, "note": "this administration discloses it, given it exists"},
+    "P_REMARK":   {"central": 0.01, "low_case": 0.01, "high_case": 0.01, "note": "an off-the-cuff remark that counts, by the end of the term (cut from 2% on 2026-11-05)"}
+  }
+}

@@ -112,8 +112,8 @@
 
 <script src="model.js"></script>
 <script>
-(function () {
-  const M = window.ForecastModel;
+fetch('inputs.json', { cache: 'no-cache' }).then((r) => r.json()).then((cfg) => {
+  const M = window.ForecastModel.fromConfig(cfg);
   const COLORS = { total: '#c7bce0', sci: '#7fa8d0', dis: '#d0a978', rem: '#93c48d', grid: '#24242e', axis: '#3a3a48' };
 
   // Input rows. pct: shown as a percentage. key matches M.DEFAULTS.
@@ -272,9 +272,13 @@
     }).join('');
   }
 
+  document.getElementById('reset').textContent = `Reset to ${M.AS_OF} values`;
   fillInputs();
   draw();
-})();
+}).catch((e) => {
+  document.querySelector('.chart-box').insertAdjacentHTML('afterbegin', '<p class="muted">The model inputs could not be loaded.</p>');
+  console.error(e);
+});
 </script>
 </body>
 </html>
