@@ -4,6 +4,6 @@ Contributions are welcome: corrections, new sources, better models, better visua
 
 - **Spotted something wrong or out of date?** Open an issue with the source.
 - **Want to change the model or a page?** Fork the repo, make the change, and open a pull request explaining why.
-- **News that should move the forecast?** Open an issue with a link; the update triggers are listed on the Model page.
+- **News that should move the forecast?** Open an issue with a link; the update triggers are listed on the Rationale page.
 
 The forecast itself stays the maintainer's call, but every input and its reasoning is open to challenge.
