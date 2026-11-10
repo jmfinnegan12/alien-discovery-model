@@ -6,7 +6,7 @@ A model from [Event Neutral](https://eventneutral.com): will U.S. officials anno
 - `model/inputs.json`: the forecast's inputs, read by both the Python and the Model page. Edit inputs here only.
 - `code/forecast_curve.py`: the forecast model. Run it to redraw the chart and write a month-by-month CSV.
 - `model/`: the interactive model page. `model/model.js` is a line-for-line port of the Python; a change to the math goes in both.
-- `kit/v1/`: the look shared by Event Neutral pages (styles, light/dark switch, D3, sliders).
+- The look shared by Event Neutral pages (styles, light/dark switch, D3, sliders) is loaded from `https://eventneutral.com/kit/v1/`. Its source is in the `event-neutral-site` repository.
 - `assets/`: styles and charts.
 
 ---
